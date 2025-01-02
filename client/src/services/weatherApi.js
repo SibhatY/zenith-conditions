@@ -1,7 +1,14 @@
 
-export const fetchWeather = async (city, units) => {
+export const fetchWeather = async (city, state = '', country = '', units = 'imperial') => {
 
-    const response = await fetch(`/api/weather?city=${city}&units=${units}`);
+    const queryParams = new URLSearchParams({
+        city,
+        state: state || undefined,
+        country: country || undefined,
+        units,
+    });
+
+    const response = await fetch(`/api/weather?city=${queryParams.toString()}`);
 
     if (!response.ok) {
         throw new Error('Failed to fetch weather data');
