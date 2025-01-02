@@ -5,6 +5,7 @@ import React, { useState } from 'react';
 
 function App() {
   const [weatherData, setWeatherData] = useState(null);
+  const [error, setError] = useState(null);
 
   return (
 
@@ -12,7 +13,8 @@ function App() {
 
       <h1>Zenith Conditions</h1>
 
-      <WeatherForm setWeatherData={setWeatherData} />
+      <WeatherForm setWeatherData={setWeatherData} setError={setError} />
+      {error && <p className='error-message'>{error}</p>}
       {weatherData && <WeatherDisplay data={weatherData} />}
       
     </div>
