@@ -1,13 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap');
+
+
+
 .App {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-align: center;
+  background: linear-gradient(180deg, #1a1a40, #000000);
+  color: #e0e0e0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
 }
 
-form {
-  margin: 20px 0;
+h1 {
+  font-size: 3rem;
+  color: #ffc857;
+  text-shadow: 0 0 10px #ffc857, 0 0 20px #ff7700, 0 0 30px #ffa500;
+  animation: glow 2s infinite alternate;
+  margin-bottom: 20px;
 }
 
-.weather-display {
-  margin-top: 20px;
+@keyframes glow {
+  from {
+    text-shadow: 0 0 10px #ffc857, 0 0 20px #ff7700, 0 0 30px #ffa500;
+  }
+  to {
+    text-shadow: 0 0 20px #4fbfff, 0 0 30px #007fff, 0 0 40px #00bfff;
+  }
 }
+
+
+.error-message {
+  color: #ff4d4d;
+  font-size: 1.2rem;
+  margin-top: 10px;
+  animation: fade-in 0.5s ease;
+}
+
+@keyframes fade-in {
+  from {
+      opacity: 0;
+  }
+  to {
+      opacity: 1;
+  }
+}
+
 
