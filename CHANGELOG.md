@@ -57,3 +57,34 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 - **Stylistic Problems**:
   - Since the default state of the app is centered on the screen, when a weather display card pops up, it abruptly pushes the form and title up to fill in space properly. May be changed by moving the title and form back to the top or having a smoother transition when the weather display appears. TBD.
   - The way that the form input is designed is a bit awkward. When a user enters a city which is mandatory, the user must enter a country code and the "US" as an input allows for the abrupt appearance of State selection. may decide to change this up stylistically for cleanliness. TBD.
+
+
+
+
+## [0.4.0] - 2024-01-05
+### Added
+- **Frontend**
+  - Integrated OpenWeatherMap Geocoding API for dynamic city autocomplete in `WeatherForm.js`, which replaces the manual inputs for 'state' and 'country'.
+  - Installed react-select to support the autocomplete feature.
+  - New `.env` file for secure storage of frontend Geocoding API key.
+
+- **Styling**
+  - Solidified a medieval and celestial style theme for the app.
+  - Enhanced `WeatherForm.css` to integrate the dynamic dropdowns for seamless integration of autocomplete feature.
+
+### Changed
+- **Frontend**
+  - `WeatherForm.js`: Removed 'usStates' constant and form inputs for states and countries, due to the shift from manual input to geocoding API and autofill.
+  - Changed title of app to "Aether" for cleanliness and simplicity
+
+### Fixed
+- **Frontend**
+  - Moved overall state of the app (Title, empty form) back to the top and has weather display appear below with smooth transition.
+  - Addressed the layout shifting issues when the weather card pops up.
+
+### Known Issues
+- ***API Call Limits**:
+  - Since the geocoding API calls are made dynamically as the user types, without optimizations this will lead to a high API usage and quickly reach the free-tier limits.
+- **Stylistic Problems**:
+  - Visuals are still not fully in the desired theme.
+  - The overall app is very empty, brainstorming more features...
