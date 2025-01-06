@@ -11,7 +11,8 @@ function App() {
 
     <div className="App">
 
-      <h1>Zenith Conditions</h1>
+      <h1>Aether</h1>
+      <p className='subtitle'> May the heavens guide your journey.</p>
 
       <WeatherForm setWeatherData={setWeatherData} setError={setError} />
       {error && <p className='error-message'>{error}</p>}
