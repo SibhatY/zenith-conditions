@@ -1,26 +1,62 @@
 import React, { useState } from 'react';
+import Select from 'react-select';
 import '../App.js';
 import './WeatherForm.css';
 
 function WeatherForm({ setWeatherData, setError }) {
 
-    const [city, setCity] = useState('');
-    const [state, setState] = useState('');
-    const [country, setCountry] = useState('');
-
+    const [cityInput, setCityInput] = useState('');
+    const [cityOptions, setCityOptions] = useState([]);
+    const [selectedCity, setSelectedCity] = useState(null);
     const [units, setUnits] = useState('imperial');
+
+
+
+    const fetchCitySuggestions = async (input) => {
+
+        try {
+            const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${process.env.REACT_APP_WEATHER_API_KEY}`);
+
+            const data = await response.json();
+            console.log('Geocoding API Response: ', data);
+
+            const options = data.map((city) => ({
+
+                label: `${city.name}, ${city.state || ''} (${city.country})`,
+                value: city,
+            }));
+            setCityOptions(options);
+        } catch (error) {
+            console.error('Error fetching city suggestions', error);
+        }
+    };
+
+
+    const handleCityInputChange = (input) => {
+
+        setCityInput(input);
+        if (input.length > 2) {
+            fetchCitySuggestions(input);
+        }
+    };
+
 
     const handleSubmit = async (e) => {
 
         e.preventDefault();
 
-        try {
+        if (!selectedCity) {
+            setError('Please select a city from the dropdown. ');
+            return;
+        }
 
+        try {
+            const { value: city } = selectedCity;
             setError(null);
             const queryParams = new URLSearchParams({
-                city,
-                state: state || undefined,
-                country: country || undefined,
+                city: city.name,
+                state: city.state || undefined,
+                country: city.country || undefined,
                 units,
             });
 
@@ -44,93 +80,56 @@ function WeatherForm({ setWeatherData, setError }) {
 
 
 
-    const usStates = [
-        { code: 'AL', name: 'Alabama' },
-        { code: 'AK', name: 'Alaska' },
-        { code: 'AZ', name: 'Arizona' },
-        { code: 'AR', name: 'Arkansas' },
-        { code: 'CA', name: 'California' },
-        { code: 'CO', name: 'Colorado' },
-        { code: 'CT', name: 'Connecticut' },
-        { code: 'DE', name: 'Delaware' },
-        { code: 'FL', name: 'Florida' },
-        { code: 'GA', name: 'Georgia' },
-        { code: 'HI', name: 'Hawaii' },
-        { code: 'ID', name: 'Idaho' },
-        { code: 'IL', name: 'Illinois' },
-        { code: 'IN', name: 'Indiana' },
-        { code: 'IA', name: 'Iowa' },
-        { code: 'KS', name: 'Kansas' },
-        { code: 'KY', name: 'Kentucky' },
-        { code: 'LA', name: 'Louisiana' },
-        { code: 'ME', name: 'Maine' },
-        { code: 'MD', name: 'Maryland' },
-        { code: 'MA', name: 'Massachusetts' },
-        { code: 'MI', name: 'Michigan' },
-        { code: 'MN', name: 'Minnesota' },
-        { code: 'MS', name: 'Mississippi' },
-        { code: 'MO', name: 'Missouri' },
-        { code: 'MT', name: 'Montana' },
-        { code: 'NE', name: 'Nebraska' },
-        { code: 'NV', name: 'Nevada' },
-        { code: 'NH', name: 'New Hampshire' },
-        { code: 'NJ', name: 'New Jersey' },
-        { code: 'NM', name: 'New Mexico' },
-        { code: 'NY', name: 'New York' },
-        { code: 'NC', name: 'North Carolina' },
-        { code: 'ND', name: 'North Dakota' },
-        { code: 'OH', name: 'Ohio' },
-        { code: 'OK', name: 'Oklahoma' },
-        { code: 'OR', name: 'Oregon' },
-        { code: 'PA', name: 'Pennsylvania' },
-        { code: 'RI', name: 'Rhode Island' },
-        { code: 'SC', name: 'South Carolina' },
-        { code: 'SD', name: 'South Dakota' },
-        { code: 'TN', name: 'Tennessee' },
-        { code: 'TX', name: 'Texas' },
-        { code: 'UT', name: 'Utah' },
-        { code: 'VT', name: 'Vermont' },
-        { code: 'VA', name: 'Virginia' },
-        { code: 'WA', name: 'Washington' },
-        { code: 'WV', name: 'West Virginia' },
-        { code: 'WI', name: 'Wisconsin' },
-        { code: 'WY', name: 'Wyoming' },
-    ];
+
+    const customSelectStyles = {
+        control: (base) => ({
+            ...base,
+            backgroundColor: 'rgba(255, 255, 255, 0.1)',
+            borderColor: 'rgba(224, 220, 220, 0.5)',
+            color: '#fff',
+            boxShadow: 'none',
+            '&:hover': {
+                borderColor: '#ffc857',
+            },
+            transition: 'border-color 0.3s ease',
+        }),
+        singleValue: (base) => ({
+            ...base,
+            color: '#fff',
+        }),
+        input: (base) => ({
+            ...base,
+            color: '#fff',
+        }),
+        placeholder: (base) => ({
+            ...base,
+            color: 'rgba(255, 255, 255, 0.7)',
+        }),
+        menu: (base) => ({
+            ...base,
+            backgroundColor: '#1a1a40',
+            color: '#fff',
+        }),
+        option: (base, state) => ({
+            ...base,
+            color: state.isFocused ? '#000' : '#fff',
+            transition: 'background-color 0.2s ease, color 0.2s ease',
+        }),
+    };
+
 
     return (
         <form className='weather-form' onSubmit={handleSubmit}>
             <div className='form-group'>
-                <input
-                    type="text"
-                    className='form-input'
-                    placeholder="Enter city (e.g., Dallas)"
-                    value={city}
-                    onChange={(e) => setCity(e.target.value)}
-                    required
-                />
-            </div>
-            <div className='form-group'>
-                <input
-                    type="text"
-                    className='form-input'
-                    placeholder="Enter country (optional)"
-                    value={country}
-                    onChange={(e) => setCountry(e.target.value)}
-                />
-            </div>
+                <Select
+                    options={cityOptions}
+                    onInputChange={handleCityInputChange}
+                    onChange={setSelectedCity}
+                    placeholder="Enter city name"
+                    styles={customSelectStyles}
 
-            {country === 'US' && (
-                <div className='form-group'>
-                    <select className='form-select' value={state} onChange={(e) => setState(e.target.value)}>
-                        <option value="">Select state</option>
-                        {usStates.map((state) => (
-                            <option key={state.code} value={state.code}>
-                                {state.name}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            )}
+                />
+            </div>
             <div className='form-group'>
                 <select className='form-select' value={units} onChange={(e) => setUnits(e.target.value)}>
                     <option value="imperial">Fahrenheit</option>
