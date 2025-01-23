@@ -55,6 +55,7 @@ h1, .weather-form, .weather-card {
 
 
 .error-message {
+  font-family: 'MedievalSharp', sans-serif;
   color: #ff4d4d;
   font-size: 1.2rem;
   margin-top: 10px;
