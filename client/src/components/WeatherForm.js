@@ -35,8 +35,11 @@ function WeatherForm({ setWeatherData, setError }) {
     const handleCityInputChange = (input) => {
 
         setCityInput(input);
-        if (input.length > 2) {
+        if (input.length >= 4) {
             fetchCitySuggestions(input);
+        }
+        else {
+            setCityOptions([]);
         }
     };
 
