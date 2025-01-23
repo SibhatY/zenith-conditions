@@ -88,3 +88,20 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 - **Stylistic Problems**:
   - Visuals are still not fully in the desired theme.
   - The overall app is very empty, brainstorming more features...
+
+
+
+
+  ## [0.5.0] - 2024-01-22
+### Added
+- **Styling**
+  - "Get Weather" button changed to fit aesthetic of app.
+  - Slight font changes.
+- **Backend**
+  - Addition of a api rate limiter to control the number of api calls that can be made 
+  - Installation of helmet for increased security.
+
+### Changed
+- **Frontend**
+  - `WeatherForm.js`: Changed minimum input length for city autocomplete from 2 to 4 to lower number of API calls.
+
