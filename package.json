@@ -1,0 +1,18 @@
+{
+  "name": "zenith-conditions",
+  "version": "1.0.0",
+  "description": "Weather application",
+  "main": "index.js",
+  "scripts": {
+    "start": "node server/index.js",
+    "heroku-postbuild": "npm install --prefix client && npm install --prefix server && npm run build --prefix client",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "engines": {
+    "node": "20.14.0",
+    "npm": "10.7.0"
+  },
+  "keywords": [],
+  "author": "Sibhat Yosef",
+  "license": "ISC"
+}
