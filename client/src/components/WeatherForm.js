@@ -18,7 +18,6 @@ function WeatherForm({ setWeatherData, setError }) {
             const response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${input}&limit=5&appid=${process.env.REACT_APP_WEATHER_API_KEY}`);
 
             const data = await response.json();
-            console.log('Geocoding API Response: ', data);
 
             const options = data.map((city) => ({
 
