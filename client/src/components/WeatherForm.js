@@ -5,7 +5,6 @@ import './WeatherForm.css';
 
 function WeatherForm({ setWeatherData, setError }) {
 
-    const [cityInput, setCityInput] = useState('');
     const [cityOptions, setCityOptions] = useState([]);
     const [selectedCity, setSelectedCity] = useState(null);
     const [units, setUnits] = useState('imperial');
@@ -33,7 +32,6 @@ function WeatherForm({ setWeatherData, setError }) {
 
     const handleCityInputChange = (input) => {
 
-        setCityInput(input);
         if (input.length >= 4) {
             fetchCitySuggestions(input);
         }
