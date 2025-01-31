@@ -71,4 +71,8 @@ h1, .weather-form, .weather-card {
   }
 }
 
-
+.loginContainer {
+  position: relative;
+  z-index: 10;
+  
+}
