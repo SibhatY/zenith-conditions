@@ -36,7 +36,7 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 
 
 
-## [0.3.0] - 2024-01-01
+## [0.3.0] - 2025-01-01
 ### Added
 - **Frontend**
   - Enhanced `WeatherForm.js` to support user inputs for state and country properly. Specifically a conditional dropdown for U.S. states. So when users enter "US" into "country" query, a list of all states become available to choose from.
@@ -61,7 +61,7 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 
 
 
-## [0.4.0] - 2024-01-05
+## [0.4.0] - 2025-01-05
 ### Added
 - **Frontend**
   - Integrated OpenWeatherMap Geocoding API for dynamic city autocomplete in `WeatherForm.js`, which replaces the manual inputs for 'state' and 'country'.
@@ -92,7 +92,7 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 
 
 
-  ## [0.5.0] - 2024-01-22
+  ## [0.5.0] - 2025-01-22
 ### Added
 - **Styling**
   - "Get Weather" button changed to fit aesthetic of app.
@@ -104,4 +104,14 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 ### Changed
 - **Frontend**
   - `WeatherForm.js`: Changed minimum input length for city autocomplete from 2 to 4 to lower number of API calls.
+
+## [Released]
+
+   ## [1.0.0] - 2025-01-30
+### Added
+- **Frontend**
+  - Created `Login.js` to establish app restriction with access code to limit api usage.
+### Changed
+- **Frontend**
+  - `App.js`: Altered to prevent user from accessing weather screen before entering access code.
 
