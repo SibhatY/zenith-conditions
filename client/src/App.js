@@ -2,6 +2,7 @@ import './App.css';
 import WeatherDisplay from './components/WeatherDisplay';
 import WeatherForm from './components/WeatherForm';
 import Login from './components/Login';
+import Footer from './components/Footer';
 import React, { useState } from 'react';
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
           {weatherData && <WeatherDisplay data={weatherData} />}
         </>
       )}
+
+      <Footer/>
     </div>
   );
 }
