@@ -20,7 +20,7 @@
 **Deployment**: Heroku
 
 ## Live Demo
-The app is **Live on Heroku**, but access is restricted through an entry code.
+The app [AetherNova](https://aethernova.cloud/) is **Live on Heroku**, but weather access is restricted through an entry code.
 
 ## Local Installation & Setup (Optional)
 
