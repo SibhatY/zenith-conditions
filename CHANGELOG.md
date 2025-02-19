@@ -92,7 +92,7 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 
 
 
-  ## [0.5.0] - 2025-01-22
+## [0.5.0] - 2025-01-22
 ### Added
 - **Styling**
   - "Get Weather" button changed to fit aesthetic of app.
@@ -107,11 +107,21 @@ All notable changes to the "Zenith Conditions" project will be documented in thi
 
 ## [Released]
 
-   ## [1.0.0] - 2025-01-30
+## [1.0.0] - 2025-01-30
 ### Added
 - **Frontend**
   - Created `Login.js` to establish app restriction with access code to limit api usage.
 ### Changed
 - **Frontend**
   - `App.js`: Altered to prevent user from accessing weather screen before entering access code.
+
+
+## [1.1.0] - 2025-02-18
+### Added
+- **Frontend**
+  - `weatherAdvice.js`: New file that determines the activity and clothing suggestions based on the weather type and temperature.
+  - `WeatherDisplay.js`: Enhanced to support the **flip card effect**. The users can now click on the weather card to flip it and reveal the activity and clothing recommendations.
+  - `WeatherDisplay.css`: Added styling to support the card flipping animations.
+### Known Issues
+- **More Optimization**: Wind speed was added but not integrated into the weather advice. Potentially will be added to recommendations as well as humidity and 'Feels like' temp.
 
