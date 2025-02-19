@@ -7,6 +7,7 @@
 - Secure API usage with backend proxying
 - Access control through entry code
 - Responsive design
+- Clothing and activity recommendations based on conditions
 
 ---
 
