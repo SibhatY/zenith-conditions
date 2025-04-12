@@ -1,15 +1,15 @@
 # Aether Nova - Celestial Weather Experience
+Live Demo: [https://aethernova.cloud/](https://aethernova.cloud/)
 
 ## Features
 - Celestial-inspired UI
 - Real-time weather updates based on user input
 - Search by city, state, or country
 - Secure API usage with backend proxying
-- Access control through entry code
 - Responsive design
 - Clothing and activity recommendations based on conditions
 
----
+
 
 ## Tech Stack
 **Frontend**: React, CSS, React Select for autocomplete
@@ -20,8 +20,7 @@
 
 **Deployment**: Heroku
 
-## Live Demo
-The app [AetherNova](https://aethernova.cloud/) is **Live on Heroku**, but weather access is restricted through an entry code.
+
 
 ## Local Installation & Setup (Optional)
 
