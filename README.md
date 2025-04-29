@@ -21,6 +21,15 @@ Live Demo: [https://aethernova.cloud/](https://aethernova.cloud/)
 **Deployment**: Heroku
 
 
+## Quality Assurance
+
+Aether Nova has been manually tested for workflows, error handling, responsiveness, and API stability. A manual test plan has been documented and is available below:
+
+📋 [View Manual Test Plan](./MANUAL_TESTS.md)
+
+*Testing is ongoing*
+
+
 
 ## Local Installation & Setup (Optional)
 
